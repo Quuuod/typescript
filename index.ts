@@ -3,12 +3,20 @@
 
 // let userName: string = 'Ivan';
 
-const isBirthday: boolean = true;
-let age: number;
-const userName: string = 'John';
+const isBirthdayData: boolean = true;
+const userNameData: string = 'John';
+let ageData: number = 40;
 
-age = +'40';
+const logBrtMsg = (
+  isBirthday: boolean,
+  userName: string,
+  age: number
+): string => {
+  if (isBirthday) {
+    return `Happy birthday ${userName}, age: ${age + 1}`;
+  } else {
+    return 'Error';
+  }
+};
 
-if (isBirthday) {
-  console.log(`Happy birthday ${userName}, age: ${age + 1}`);
-}
+console.log(logBrtMsg(isBirthdayData, userNameData, ageData));

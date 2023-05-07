@@ -1,10 +1,14 @@
 // const str = 'str';
 // console.log(str);
 // let userName: string = 'Ivan';
-var isBirthday = true;
-var age;
-var userName = 'John';
-age = +'40';
-if (isBirthday) {
-    console.log("Happy birthday ".concat(userName, ", age: ").concat(age + 1));
-}
+var isBirthdayData = true;
+var userNameData = 'John';
+var ageData = 40;
+var logBrtMsg = function (isBirthday, userName, age) {
+  if (isBirthday) {
+    return 'Happy birthday '.concat(userName, ', age: ').concat(age + 1);
+  } else {
+    return 'Error';
+  }
+};
+console.log(logBrtMsg(isBirthdayData, userNameData, ageData));
