@@ -20,12 +20,6 @@ const serverConfig: IConfigWithRole = {
   log: (msg: string): void => console.log(msg),
 };
 
-// const backupConfig: ConfigWithRole = {
-//   protocol: 'https',
-//   port: 3000,
-//   role: 'sysadmin',
-// };
-
 type StartFunction = (
   protocol: 'http' | 'https',
   port: 3000 | 3001,
