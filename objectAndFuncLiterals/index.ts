@@ -1,14 +1,26 @@
-type port = 3001 | 3000;
-type protocol = 'https' | 'http';
+type Config = { protocol: 'https' | 'http'; port: 3001 | 3000 };
+type Role = {
+  role: string;
+};
+type ConfigWithRole = Config & Role;
 
-const serverConfig: { protocol: protocol; port: port } = {
-  protocol: 'https',
+const serverConfig: ConfigWithRole = {
+  protocol: 'http',
   port: 3001,
+  role: 'admin',
 };
 
-const startServer: (protocol: protocol, port: port) => string = (
-  protocol: protocol,
-  port: port
+const backupConfig: ConfigWithRole = {
+  protocol: 'https',
+  port: 3000,
+  role: 'sysadmin',
+};
+
+type StartFunction = (protocol: 'http' | 'https', port: 3000 | 3001) => string;
+
+const startServer: StartFunction = (
+  protocol: 'http' | 'https',
+  port: 3000 | 3001
 ): 'Server Started' | 'Failed' => {
   if (port === 3000 || port === 3001) {
     console.log(`Server Started on ${protocol}: //server:${port}`);
