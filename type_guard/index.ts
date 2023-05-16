@@ -16,6 +16,7 @@ function isNumber(n: unknown): n is number {
 }
 
 interface Car {
+  name: 'car';
   engine: string;
   wheels: {
     number: number;
@@ -24,25 +25,53 @@ interface Car {
 }
 
 interface Ship {
+  name: 'ship';
   engine: string;
   sail: string;
 }
 
-function repairVehicle(vehicle: Car | Ship) {
-  console.log(vehicle.engine);
-  if (isCar(vehicle)) {
-    console.log(vehicle.wheels);
-  } else if (isShip(vehicle)) {
-    console.log(vehicle.sail);
-  } else {
-    console.log(vehicle);
+interface Airplane {
+  name: 'airplane';
+  engine: string;
+  wings: string;
+}
+interface SuperAirplane {
+  name: 'superAirplane';
+  engine: string;
+  wings: string;
+}
+
+type Vehicle = Car | Ship | Airplane | SuperAirplane;
+
+function repairVehicle(vehicle: Vehicle) {
+  // console.log(vehicle.engine);
+  // if (isCar(vehicle)) {
+  //   console.log(vehicle.wheels);
+  // } else if (isShip(vehicle)) {
+  //   console.log(vehicle.sail);
+  // } else {
+  //   const smth: never = vehicle; //vehicle: never
+  // }
+  switch (vehicle.name) {
+    case 'car':
+      console.log(vehicle.wheels);
+      break;
+    case 'ship':
+      console.log(vehicle.sail);
+      break;
+    case 'airplane':
+      console.log(vehicle.wings);
+      break;
+    default:
+      const smth: never = vehicle; //применение never для того чтобы выявить ошибку
+      console.log('never');
   }
 }
 
 //функция Type Guard для сложного типа данных
-function isCar(car: Car | Ship): car is Car {
+function isCar(car: Vehicle): car is Car {
   return (car as Car).wheels.number !== undefined;
 }
-function isShip(ship: Car | Ship): ship is Ship {
+function isShip(ship: Vehicle): ship is Ship {
   return 'sail' in ship;
 }
