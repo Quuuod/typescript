@@ -11,7 +11,7 @@ enum FormatsOfMedia {
   WEBM = '.webm',
 }
 
-interface IMedia {
+interface IMediaProps {
   name: string;
   type: TypesOfMedia;
   format: FormatsOfMedia;
@@ -20,7 +20,7 @@ interface IMedia {
 }
 
 function playMedia(
-  { name, type, format, subtitles, marks }: IMedia = {
+  { name, type, format, subtitles, marks }: IMediaProps = {
     name: 'example',
     type: TypesOfMedia.AUDIO,
     format: FormatsOfMedia.MP4,
