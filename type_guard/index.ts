@@ -63,7 +63,7 @@ function repairVehicle(vehicle: Vehicle) {
       console.log(vehicle.wings);
       break;
     default:
-      const smth: never = vehicle; //применение never для того чтобы выявить ошибку
+      // const smth: never = vehicle; //применение never для того чтобы выявить ошибку
       console.log('never');
   }
 }
