@@ -62,6 +62,6 @@ function checkFormData(data: IFormData): void {
   if (emails.some((email) => email === dataEmail)) {
     console.log('This email is already exist');
   } else {
-    console.log('Posting data...');
+    console.log('Posting data...'); //имитация отправки данных
   }
 }
